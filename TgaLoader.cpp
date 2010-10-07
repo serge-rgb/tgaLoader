@@ -30,6 +30,7 @@ t_texture * TgaLoader::load(string fname){
 	texture->w = header.width;
 	texture->h = header.height;
 
+	texture->bpp = header.bitsperpixel;
 	int bytesperpixel=header.bitsperpixel/8;
 #ifdef _WITH_GL
 	switch(header.bitsperpixel){

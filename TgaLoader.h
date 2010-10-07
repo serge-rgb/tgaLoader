@@ -37,7 +37,7 @@ typedef struct{
 #ifdef _WITH_GL
 	int texFormat;
 #endif
-
+	int bpp; //bits per pixel
 	TGA_BYTE *texels;
 } t_texture;
 
