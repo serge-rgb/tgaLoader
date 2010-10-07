@@ -1,6 +1,16 @@
 #pragma once
 
+#include <cstdio>
 //#define _WITH_GL
+
+#ifdef _WITH_GL
+#define TGA_BYTE GLubyte
+#endif
+
+#ifndef _WITH_GL
+#define TGA_BYTE char
+#define GL_RGB
+#endif
 
 typedef struct {
 	char  idlength;
@@ -19,11 +29,13 @@ typedef struct {
 
 typedef struct{
 	int w,h;
+	
+#ifdef _WITH_GL
 	int texType;
 	int texFormat;
-#ifdef _WITH_GL
-	GLubyte *texels;
 #endif
+
+	TGA_BYTE *texels;
 } t_texture;
 
 class TgaLoader

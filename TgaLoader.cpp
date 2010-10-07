@@ -29,7 +29,8 @@ t_texture * TgaLoader::load(char *fname){
 	
 	texture->w = header.width;
 	texture->h = header.height;
-	
+
+#ifdef _WITH_GL
 	switch(header.bitsperpixel){
 		case 24:
 			texture->texType = 3;
@@ -44,9 +45,10 @@ t_texture * TgaLoader::load(char *fname){
 			exit(-1);
 			break;
 	}
+#endif
 	
 	/*Allocate memory*/
-	texture->texels = (GLubyte *) malloc(texture->w*texture->h*texture->texType*sizeof(GLubyte));
+	texture->texels = (TGA_BYTE *) malloc(texture->w*texture->h*texture->texType*sizeof(TGA_BYTE));
 	
 	int pixnum = header.width * header.height;
 	
