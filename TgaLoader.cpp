@@ -6,7 +6,7 @@ TgaLoader::TgaLoader(void)
 
 t_texture * TgaLoader::load(string fname){
 	t_tgaHeader header;
-	//t_texture *texture = tex;
+	t_texture *texture;
 	FILE *fd;
 	long int offset = 4*sizeof(char)+4*sizeof(short int);
 	
