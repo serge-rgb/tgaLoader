@@ -6,7 +6,7 @@ TgaLoader::TgaLoader(void)
 
 t_texture * TgaLoader::load(string fname){
 	t_tgaHeader header;
-	t_texture *texture = tex;
+	//t_texture *texture = tex;
 	FILE *fd;
 	long int offset = 4*sizeof(char)+4*sizeof(short int);
 	
@@ -73,7 +73,8 @@ t_texture * TgaLoader::load(string fname){
 	fclose(fd);
 	
 	printf("Loaded %i bit TGA file'\n",header.bitsperpixel);
-	
+
+	this->tex = texture;
 	return texture;
 }
 
