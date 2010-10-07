@@ -4,7 +4,7 @@ TgaLoader::TgaLoader(void)
 {
 }
 
-t_texture * TgaLoader::load(char *fname){
+t_texture * TgaLoader::load(string fname){
 	t_tgaHeader header;
 	t_texture *texture = tex;
 	FILE *fd;
@@ -12,9 +12,9 @@ t_texture * TgaLoader::load(char *fname){
 	
 	texture = (t_texture *)malloc(sizeof(t_texture));
 	
-	fd = fopen(fname,"rb");
+	fd = fopen(fname.c_str(),"rb");
 	if(!fd){
-		printf("File %s not found\n",fname);
+		printf("File %s not found\n",fname.c_str());
 		exit(-1);
 	}
 	
@@ -78,7 +78,7 @@ t_texture * TgaLoader::load(char *fname){
 }
 
 #ifdef _WITH_GL
-GLuint TgaLoader::newTex2d(char *fname)
+GLuint TgaLoader::newTex2d(string fname)
 {
 	GLuint name;
 	//t_texture *tex;

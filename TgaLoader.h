@@ -44,10 +44,10 @@ class TgaLoader
 public:
 	TgaLoader(void);
 #ifdef _WITH_GL
-	GLuint newTex2d(char *fname);
+	GLuint newTex2d(string fname);
 #endif
 	~TgaLoader(void);
 private:
 	t_texture* tex;
-	t_texture* load(char *fname);
+	t_texture* load(string fname);
 };
