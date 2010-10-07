@@ -76,6 +76,7 @@ t_texture * TgaLoader::load(char *fname){
 	return texture;
 }
 
+#ifdef _WITH_GL
 GLuint TgaLoader::newTex2d(char *fname)
 {
 	GLuint name;
@@ -97,7 +98,7 @@ GLuint TgaLoader::newTex2d(char *fname)
 	/*The texture is now inside OpenGL*/
 	return name;
 }
-
+#endif
 
 TgaLoader::~TgaLoader(void)
 {

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Common.h"
+//#define _WITH_GL
 
 typedef struct {
 	char  idlength;
@@ -21,14 +21,18 @@ typedef struct{
 	int w,h;
 	int texType;
 	int texFormat;
+#ifdef _WITH_GL
 	GLubyte *texels;
+#endif
 } t_texture;
 
 class TgaLoader
 {
 public:
 	TgaLoader(void);
+#ifdef _WITH_GL
 	GLuint newTex2d(char *fname);
+#endif
 	~TgaLoader(void);
 private:
 	t_texture* tex;
