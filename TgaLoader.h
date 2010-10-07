@@ -2,7 +2,9 @@
 
 #include <cstdio>
 #include<stdlib.h>
+#include<string>
 
+using namespace std;
 //#define _WITH_GL
 
 #ifdef _WITH_GL
@@ -42,12 +44,11 @@ typedef struct{
 class TgaLoader
 {
 public:
-	TgaLoader(void);
+  t_texture* tex;
+  TgaLoader(void);
 #ifdef _WITH_GL
 	GLuint newTex2d(string fname);
 #endif
-	~TgaLoader(void);
-private:
-	t_texture* tex;
-	t_texture* load(string fname);
+  t_texture* load(string fname);
+  ~TgaLoader(void);
 };
