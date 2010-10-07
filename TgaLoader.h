@@ -33,7 +33,6 @@ typedef struct{
 	int w,h;
 	
 #ifdef _WITH_GL
-	int texType;
 	int texFormat;
 #endif
 

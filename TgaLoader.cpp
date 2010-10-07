@@ -30,14 +30,13 @@ t_texture * TgaLoader::load(char *fname){
 	texture->w = header.width;
 	texture->h = header.height;
 
+	int bytesperpixel=bitsperpixel/8;
 #ifdef _WITH_GL
 	switch(header.bitsperpixel){
 		case 24:
-			texture->texType = 3;
 			texture->texFormat = GL_RGB;
 			break;
 		case 32:
-			texture->texType = 4;
 			texture->texFormat = GL_RGBA ;
 			break;
 		default:
@@ -48,7 +47,7 @@ t_texture * TgaLoader::load(char *fname){
 #endif
 	
 	/*Allocate memory*/
-	texture->texels = (TGA_BYTE *) malloc(texture->w*texture->h*texture->texType*sizeof(TGA_BYTE));
+	texture->texels = (TGA_BYTE *) malloc(texture->w*texture->h*bytesperpixel*sizeof(TGA_BYTE));
 	
 	int pixnum = header.width * header.height;
 	
@@ -95,7 +94,7 @@ GLuint TgaLoader::newTex2d(char *fname)
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 
-	glTexImage2D(GL_TEXTURE_2D,0,tex->texType,tex->w,tex->h,0,tex->texFormat,GL_UNSIGNED_BYTE,tex->texels);
+	glTexImage2D(GL_TEXTURE_2D,0,bytesperpixel,tex->w,tex->h,0,tex->texFormat,GL_UNSIGNED_BYTE,tex->texels);
 
 	/*The texture is now inside OpenGL*/
 	return name;
