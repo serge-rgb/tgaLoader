@@ -1,6 +1,8 @@
 #pragma once
 
 #include <cstdio>
+#include<stdlib.h>
+
 //#define _WITH_GL
 
 #ifdef _WITH_GL
